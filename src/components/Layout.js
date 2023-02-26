@@ -18,7 +18,7 @@ export default function Layout({ children }) {
 		if (currentTheme === "dark") {
 			return (
 				<SunIcon
-					className="w-10 h-10 text-yellow-500 "
+					className="w-10 h-10 z-10 text-yellow-500 "
 					role="button"
 					onClick={() => setTheme("light")}
 				/>
@@ -26,7 +26,7 @@ export default function Layout({ children }) {
 		} else {
 			return (
 				<MoonIcon
-					className="w-10 h-10 text-gray-900 "
+					className="w-10 h-10 z-10 text-gray-900 "
 					role="button"
 					onClick={() => setTheme("dark")}
 				/>
@@ -40,6 +40,7 @@ export default function Layout({ children }) {
 				<img
 					src="/images/logo-killamunay-dark.png"
 					alt="logo-killamunay-dark"
+					className="z-10"
 				/>
 				{renderThemeChanger()}
 			</header>

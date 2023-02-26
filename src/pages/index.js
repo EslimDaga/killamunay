@@ -15,7 +15,7 @@ export default function Home() {
 		<>
 			<Particles
 				id="tsparticles"
-				className="w-full h-full fixed"
+				className="w-full h-full absolute top-0"
 				init={particlesInit}
 				loaded={particlesLoaded}
 				options={{
