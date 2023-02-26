@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    font-family: 'Poppins', sans-serif;
+:root {
+	--primary: #fbb725;
+	--dark-primary: #191820;
+}
+
+@layer base {
+	body {
+		font-family: "Poppins", sans-serif;
+		height: 100vh;
+		@apply bg-white dark:bg-dark-primary;
+	}
+}
+
+.section-hero {
+	height: calc(100vh - 6rem);
 }
