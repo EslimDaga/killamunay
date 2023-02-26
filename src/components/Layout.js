@@ -43,7 +43,7 @@ export default function Layout({ children }) {
 				/>
 				{renderThemeChanger()}
 			</header>
-			<main>{children}</main>
+			<main className="flex justify-center section-hero">{children}</main>
 		</>
 	);
 }
