@@ -15,7 +15,7 @@ const Header = () => {
 	const currentTheme = theme === "system" ? systemTheme : theme;
 
 	return (
-		<header className="w-full h-24 flex items-center justify-between px-8">
+		<header className="w-full h-24 flex items-center justify-between px-4 lg:px-8">
 			<img
 				src="/images/logo-killamunay-dark.png"
 				alt="logo-killamunay-dark"
