@@ -1,10 +1,13 @@
-import { useTheme } from "next-themes";
-import { useCallback } from "react";
 import Particles from "react-particles";
+import { useTheme } from "next-themes";
+import { useCallback, useEffect, useState } from "react";
 import { loadFull } from "tsparticles";
+import { Moon } from "lunarphase-js";
 
 export default function Home() {
 	const { theme } = useTheme();
+	const [moonPhase, setMoonPhase] = useState("phase_new");
+	const [moonPhaseName, setMoonPhaseName] = useState("New Moon");
 
 	const particlesInit = useCallback(async engine => {
 		await loadFull(engine);
@@ -14,11 +17,54 @@ export default function Home() {
 		await container.refresh();
 	}, []);
 
+	const today = new Date();
+	const moon_phase_emoji = Moon.lunarPhaseEmoji(today);
+	const moon_phase = Moon.lunarPhase(today);
+
+	useEffect(() => {
+		switch (moon_phase) {
+			case "New":
+				setMoonPhase("phase_new");
+				setMoonPhaseName("Luna Nueva");
+				break;
+			case "Waxing Crescent":
+				setMoonPhase("phase_waxing_crescent");
+				setMoonPhaseName("Luna Nueva Creciente");
+				break;
+			case "First Quarter":
+				setMoonPhase("phase_first_quarter");
+				setMoonPhaseName("Cuarto Creciente");
+				break;
+			case "Waxing Gibbous":
+				setMoonPhase("phase_waxing_gibbous");
+				setMoonPhaseName("Luna Creciente Gibosa");
+				break;
+			case "Full":
+				setMoonPhase("phase_full");
+				setMoonPhaseName("Luna Llena");
+				break;
+			case "Waning Gibbous":
+				setMoonPhase("phase_waning_gibbous");
+				setMoonPhaseName("Luna Menguante Gibosa");
+				break;
+			case "Last Quarter":
+				setMoonPhase("phase_last_quarter");
+				setMoonPhaseName("Cuarto Menguante");
+				break;
+			case "Waning Crescent":
+				setMoonPhase("phase_waning_crescent");
+				setMoonPhaseName("Luna Menguante Creciente");
+				break;
+			default:
+				break;
+		}
+	}, [moonPhase]);
+
 	return (
 		<>
 			<Particles
 				id="tsparticles"
-				className="w-full h-full absolute top-0 bg-white dark:bg-dark-primary"
+				className="w-full h-screen absolute top-0 bg-white dark:bg-dark-primary"
 				init={particlesInit}
 				loaded={particlesLoaded}
 				options={{
@@ -184,11 +230,11 @@ export default function Home() {
 					},
 				}}
 			/>
-			<section className="w-full flex flex-col items-start justify-center gap-10 px-8 z-10">
-				<h1 className="font-extrabold text-6xl text-dark-primary dark:text-white">
-					Descrubre tu luna
+			<section className="w-full flex flex-col items-start justify-center gap-4 lg:gap-10 px-8 z-10">
+				<h1 className="font-extrabold text-3xl lg:text-6xl text-dark-primary dark:text-white">
+					Descrubre tu luna {moon_phase_emoji}
 				</h1>
-				<p className="font-regular text-xl text-dark-primary dark:text-white">
+				<p className="font-regular text-base lg:text-xl text-dark-primary dark:text-white">
 					Descubre cómo lucía la luna en el momento en que tú o esa persona
 					especial nacieron.
 				</p>
@@ -196,9 +242,16 @@ export default function Home() {
 					Comenzar
 				</button>
 			</section>
-			<section className="w-full flex items-center justify-center z-10">
-				<div className="">
-					<img src="/images/moon-phases/phase_waxing_crescent.png" alt="" />
+			<section className="w-full flex items-center justify-center px-8 z-10">
+				<div className="flex flex-col items-center justify-center">
+					<h1 className="font-bold hidden lg:block lg:text-4xl text-primary text-center">
+						Hoy es la Fase {moonPhaseName}
+					</h1>
+					<img
+						src={`/images/moon-phases/${moonPhase}.png`}
+						alt={moonPhase}
+						className="w-72 lg:w-96"
+					/>
 				</div>
 			</section>
 		</>
