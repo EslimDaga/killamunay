@@ -18,7 +18,7 @@ export default function Layout({ children }) {
 		if (currentTheme === "dark") {
 			return (
 				<SunIcon
-					className="w-10 h-10 z-10 text-yellow-500 "
+					className="w-10 h-10 z-10 text-primary "
 					role="button"
 					onClick={() => setTheme("light")}
 				/>
@@ -26,7 +26,7 @@ export default function Layout({ children }) {
 		} else {
 			return (
 				<MoonIcon
-					className="w-10 h-10 z-10 text-gray-900 "
+					className="w-10 h-10 z-10 text-primary "
 					role="button"
 					onClick={() => setTheme("dark")}
 				/>

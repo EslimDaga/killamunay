@@ -1,8 +1,11 @@
+import { useTheme } from "next-themes";
 import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 
 export default function Home() {
+	const { theme } = useTheme();
+
 	const particlesInit = useCallback(async engine => {
 		await loadFull(engine);
 	}, []);
@@ -15,7 +18,7 @@ export default function Home() {
 		<>
 			<Particles
 				id="tsparticles"
-				className="w-full h-full absolute top-0"
+				className="w-full h-full absolute top-0 bg-white dark:bg-dark-primary"
 				init={particlesInit}
 				loaded={particlesLoaded}
 				options={{
@@ -66,7 +69,7 @@ export default function Home() {
 							},
 						},
 						color: {
-							value: "#fff",
+							value: theme === "dark" ? "#F1F2F3" : "#191820",
 							animation: {
 								enable: false,
 								speed: 1,
@@ -77,7 +80,7 @@ export default function Home() {
 							type: "circle",
 						},
 						opacity: {
-							value: 0.1,
+							value: theme === "dark" ? 0.3 : 0.2,
 							random: false,
 							animation: {
 								enable: false,
@@ -160,7 +163,6 @@ export default function Home() {
 					},
 					detectRetina: true,
 					background: {
-						color: "#191820",
 						image: "",
 						position: "50% 50%",
 						repeat: "no-repeat",
@@ -183,12 +185,14 @@ export default function Home() {
 				}}
 			/>
 			<section className="w-full flex flex-col items-start justify-center gap-10 px-8 z-10">
-				<h1 className="font-extrabold text-6xl">Descrubre tu luna</h1>
-				<p className="font-regular text-xl">
+				<h1 className="font-extrabold text-6xl text-dark-primary dark:text-white">
+					Descrubre tu luna
+				</h1>
+				<p className="font-regular text-xl text-dark-primary dark:text-white">
 					Descubre cómo lucía la luna en el momento en que tú o esa persona
 					especial nacieron.
 				</p>
-				<button className="bg-primary px-6 py-4 rounded-xl font-semibold text-lg text-dark-primary">
+				<button className="bg-primary hover:bg-secondary px-6 py-4 rounded-xl font-semibold text-lg text-dark-primary">
 					Comenzar
 				</button>
 			</section>
