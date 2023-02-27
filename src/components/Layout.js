@@ -40,7 +40,7 @@ export default function Layout({ children }) {
 				<img
 					src="/images/logo-killamunay-dark.png"
 					alt="logo-killamunay-dark"
-					className="z-10"
+					className="z-10 lg:w-52 w-44"
 				/>
 				{renderThemeChanger()}
 			</header>
