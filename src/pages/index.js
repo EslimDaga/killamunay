@@ -232,9 +232,9 @@ export default function Home() {
 			/>
 			<section className="hero-content w-full flex flex-col items-start justify-center gap-4 lg:gap-10 px-4 lg:px-8 z-10">
 				<h1 className="font-extrabold text-3xl lg:text-6xl text-dark-primary dark:text-white">
-					Descrubre tu luna {moon_phase_emoji}
+					Descrubre tu luna
 				</h1>
-				<p className="font-regular text-base lg:text-xl text-dark-primary dark:text-white">
+				<p className="font-medium text-base lg:text-xl text-dark-primary dark:text-white">
 					Descubre cómo lucía la luna en el momento en que tú o esa persona
 					especial nacieron.
 				</p>
@@ -244,9 +244,9 @@ export default function Home() {
 			</section>
 			<section className="hero-content w-full flex items-center justify-center px-4 lg:px-8 z-10">
 				<div className="flex flex-col items-center justify-center">
-					<h1 className="font-bold hidden lg:block lg:text-4xl text-primary text-center">
-						Hoy es la Fase {moonPhaseName}
-					</h1>
+					<h2 className="font-bold text-center text-primary text-3xl lg:text-4xl">
+						{moonPhaseName} {moon_phase_emoji}
+					</h2>
 					<img
 						src={`/images/moon-phases/${moonPhase}.png`}
 						alt={moonPhase}
