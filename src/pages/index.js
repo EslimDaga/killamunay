@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-
+import {
+	LazyLoadImage,
+	LazyLoadComponent,
+} from "react-lazy-load-image-component";
 import { Moon } from "lunarphase-js";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function Home() {
 	const [moonPhase, setMoonPhase] = useState("phase_new");
-	const [moonPhaseName, setMoonPhaseName] = useState("New Moon");
+	const [moonPhaseName, setMoonPhaseName] = useState("");
 
 	const today = new Date();
 	const moon_phase_emoji = Moon.lunarPhaseEmoji(today);
@@ -67,13 +71,16 @@ export default function Home() {
 			</section>
 			<section className="hero-content w-full flex items-center justify-center px-4 lg:px-8 z-10">
 				<div className="flex flex-col items-center justify-center">
-					<h2 className="font-bold text-center text-primary text-2xl lg:text-4xl">
-						{moonPhaseName} {moon_phase_emoji}
-					</h2>
-					<img
+					<LazyLoadComponent>
+						<h2 className="font-bold text-center text-primary text-2xl lg:text-3xl xl:text-4xl">
+							{moonPhaseName} {moon_phase_emoji}
+						</h2>
+					</LazyLoadComponent>
+					<LazyLoadImage
+						effect="blur"
 						src={`/images/moon-phases/${moonPhase}.png`}
-						alt={moonPhase}
-						className="w-72 lg:w-96"
+						alt="Moon Phase"
+						className="w-72 h-72 lg:w-[30rem] lg:h-[30rem]"
 					/>
 				</div>
 			</section>
