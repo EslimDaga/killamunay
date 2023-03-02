@@ -58,8 +58,8 @@ export default function Home() {
 					Descrubre tu luna
 				</h1>
 				<p className="font-medium text-base lg:text-xl text-dark-primary dark:text-white">
-					Descubre cómo lucía la luna en el momento en que tú o esa persona
-					especial nacieron.
+					💌 Descubre cómo lucía la luna en el momento en que tú o esa persona
+					especial nacieron. ❤️
 				</p>
 				<button className="bg-primary hover:bg-secondary px-6 py-3 lg:py-4 rounded-xl font-semibold text-lg text-dark-primary">
 					Comenzar
@@ -67,7 +67,7 @@ export default function Home() {
 			</section>
 			<section className="hero-content w-full flex items-center justify-center px-4 lg:px-8 z-10">
 				<div className="flex flex-col items-center justify-center">
-					<h2 className="font-bold text-center text-primary text-3xl lg:text-4xl">
+					<h2 className="font-bold text-center text-primary text-2xl lg:text-4xl">
 						{moonPhaseName} {moon_phase_emoji}
 					</h2>
 					<img
